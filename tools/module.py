@@ -3,42 +3,43 @@ Platform level definitions
 Description: The file includes platform specific defines which are common for all modules.
 """
 
-#---------------------#
+# ---------------------#
 #    Import Section   #
-#---------------------#
+# ---------------------#
 
 from enum import Enum
 import logging
 
-#---------------------#
+# ---------------------#
 #      Constants      #
-#---------------------#
+# ---------------------#
 
-#---------------------#
+# ---------------------#
 #   Type Definitions  #
-#---------------------#
-
+# ---------------------#
 
 
 # Define module names
 class SlkModules(Enum):
-    MODULE_DUMMY    = "MODULE_DUMMY"
-    MODULE_TOOLS    = "MODULE_TOOLS"
+    MODULE_DUMMY = "MODULE_DUMMY"
+    MODULE_TOOLS = "MODULE_TOOLS"
     MODULE_ETHERNET = "MODULE_ETHERNET"
 
-#---------------------#
+
+# ---------------------#
 #      Exceptions     #
-#---------------------#
+# ---------------------#
 
 
-#---------------------#
+# ---------------------#
 #       Variables     #
-#---------------------#
+# ---------------------#
 registered_interfaces = {}
 
-#---------------------#
+
+# ---------------------#
 #  Public Interfaces #
-#---------------------#
+# ---------------------#
 def register_module_interface(interface_description):
     """
     Register module interfaces.
@@ -51,8 +52,8 @@ def register_module_interface(interface_description):
         interface_description = [interface_description]
 
     for interface in interface_description:
-        module      = interface["MODULE_NAME"]
-        function    = interface["FUNCTION_NAME"]
+        module = interface["MODULE_NAME"]
+        function = interface["FUNCTION_NAME"]
         description = interface["DESCRIPTION"]
 
         if module not in SlkModules.__members__:
@@ -61,10 +62,10 @@ def register_module_interface(interface_description):
         if module not in registered_interfaces:
             registered_interfaces[module] = []
 
-        registered_interfaces[module].append({
-            "FUNCTION_NAME": function,
-            "DESCRIPTION": description
-        })
+        registered_interfaces[module].append(
+            {"FUNCTION_NAME": function, "DESCRIPTION": description}
+        )
+
 
 def display_module_functions(module: str):
     """
@@ -80,8 +81,8 @@ def display_module_functions(module: str):
     # Configure logging
     logging.basicConfig(
         level=logging.DEBUG,
-        format='%(asctime)s - %(levelname)-8s: %(message)s',
-        datefmt='%Y-%m-%d %H:%M:%S'
+        format="%(asctime)s - %(levelname)-8s: %(message)s",
+        datefmt="%Y-%m-%d %H:%M:%S",
     )
 
     # Calculate the maximum length of function names for alignment
@@ -96,7 +97,6 @@ def display_module_functions(module: str):
     print("\n")
 
 
-#---------------------#
+# ---------------------#
 #  Private Interfaces #
-#---------------------#
-
+# ---------------------#
