@@ -13,7 +13,7 @@ import sys
 from typing import List
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-import tools.platform_defines as plt_def
+import tools.module as _module
 
 #---------------------#
 #      Constants      #
@@ -56,7 +56,7 @@ def set_log_level(module: str, levels: List[str]):
         module (str): The name of the module.
         levels (List[str]): The log levels to set.
     """
-    if module not in plt_def.SlkModules.__members__:
+    if module not in _module.SlkModules.__members__:
         raise ValueError(f"Invalid module name: {module}")
 
     level_enums = set()
@@ -80,11 +80,11 @@ def message(level: str, module: str, message: str):
     if level not in LogLevel.__members__:
         raise ValueError(f"Invalid log level: {level}")
 
-    if module not in plt_def.SlkModules.__members__:
+    if module not in _module.SlkModules.__members__:
         raise ValueError(f"Invalid module name: {module}")
 
     level_enum  = LogLevel[level]
-    module_enum = plt_def.SlkModules[module]
+    module_enum = _module.SlkModules[module]
 
     # Configure logging
     logging.basicConfig(

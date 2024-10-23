@@ -13,8 +13,11 @@ Description: [Brief description of the test script]
 # Import all necessary modules and packages required for the test script
 import sys
 import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
+import tools.logger as _log
+import tools.module as _module
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-import tools.logger as log
+import dummy.interfaces.interfaces as interface
 
 #---------------------#
 #      Constants      #
@@ -73,6 +76,7 @@ def _execute_test():
     """
     Execute. This function contains the actual test.
     """
+    _module.display_module_functions("MODULE_DUMMY")
     return 0
 
 
@@ -86,7 +90,7 @@ def _post_test():
     """
     Post-test. This function is called after each test.
     """
-    pass
+    return 0
 
 
 def main():
@@ -106,7 +110,7 @@ def main():
 
 if __name__ == "__main__":
     # Configure logging
-    log.set_log_level("MODULE_TOOLS", ["LOG_LEVEL_INFO", "LOG_LEVEL_DEBUG", "LOG_LEVEL_ERROR"])
+    _log.set_log_level("MODULE_TOOLS", ["LOG_LEVEL_INFO", "LOG_LEVEL_DEBUG", "LOG_LEVEL_ERROR"])
 
     try:
         return_code = main()
@@ -114,6 +118,6 @@ if __name__ == "__main__":
         return_code = -1
         log.message("LOG_LEVEL_ERROR", "MODULE_TOOLS", "Exception: An error occurred")
 
-    log.message("LOG_LEVEL_INFO", "MODULE_TOOLS", f"Test completed with return code : {return_code}")
+    _log.message("LOG_LEVEL_INFO", "MODULE_TOOLS", f"Test completed with return code : {return_code}")
 
     sys.exit(return_code)
