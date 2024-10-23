@@ -7,7 +7,7 @@ Description: [Brief description of the test script]
 """
 
 # ---------------------#
-#    Import Section   #
+#    Import Section    #
 # ---------------------#
 # Import all necessary modules and packages required for the test script
 import sys
@@ -16,31 +16,31 @@ import os
 import tools.logger as log
 
 # ---------------------#
-#      Constants      #
+#      Constants       #
 # ---------------------#
 # Define any constants that will be used in the test script
 
 
 # ---------------------#
-#   Type Definitions  #
+#   Type Definitions   #
 # ---------------------#
 # Define any custom types or classes that will be used in the script
 
 
 # ---------------------#
-#       Variables     #
+#       Variables      #
 # ---------------------#
 # Declare any variables that will be used in the script
 
 
 # ---------------------#
-#  Private Interfaces #
+#  Private Interfaces  #
 # ---------------------#
 # Define functions and classes that are intended to be used only within this test script
 
 
 # ---------------------#
-#  Pre-tests Section  #
+#  Pre-tests Section   #
 # ---------------------#
 # Code that sets up the environment before all tests are run
 
@@ -53,7 +53,7 @@ def _pre_test():
 
 
 # ---------------------#
-#    Setup Section    #
+#    Setup Section     #
 # ---------------------#
 # Code that sets up the environment before each individual test
 
@@ -66,7 +66,7 @@ def _setup_test():
 
 
 # ---------------------#
-#    Execute Section  #
+#    Execute Section   #
 # ---------------------#
 # Code that contains the actual tests
 
@@ -79,7 +79,7 @@ def _execute_test():
 
 
 # ---------------------#
-#  Post-test Section  #
+#  Post-test Section   #
 # ---------------------#
 # Code that cleans up the environment after each individual test
 
