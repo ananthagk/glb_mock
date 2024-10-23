@@ -15,7 +15,7 @@ import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 import tools.logger as log
-import tools.platform_defines as platform
+import tools.platform_defines as plt_def
 
 #---------------------#
 #      Constants      #
@@ -107,14 +107,14 @@ def main():
 
 if __name__ == "__main__":
     # Configure logging
-    log.set_log_level(platform.MODULE_TOOLS, log.LOG_LEVEL_INFO | log.LOG_LEVEL_DEBUG | log.LOG_LEVEL_ERROR)
+    log.set_log_level("MODULE_TOOLS", ["LOG_LEVEL_INFO", "LOG_LEVEL_DEBUG", "LOG_LEVEL_ERROR"])
 
     try:
         return_code = main()
     except:
         return_code = -1
-        log.message(log.LOG_LEVEL_ERROR, platform.MODULE_TOOLS, "Exception: An error occurred")
+        log.message("LOG_LEVEL_ERROR", "MODULE_TOOLS", "Exception: An error occurred")
 
-    log.message(log.LOG_LEVEL_INFO, platform.MODULE_TOOLS, f"Test completed with return code : {return_code}")
+    log.message("LOG_LEVEL_INFO", "MODULE_TOOLS", f"Test completed with return code : {return_code}")
 
     sys.exit(return_code)

@@ -17,9 +17,12 @@ from enum import Enum
 #   Type Definitions  #
 #---------------------#
 
+
+
 # Define module names
-MODULE_TOOLS    = "TOOLS"
-MODULE_ETHERNET = "ETHERNET"
+class SlkModules(Enum):
+    MODULE_TOOLS    = "MODULE_TOOLS"
+    MODULE_ETHERNET = "MODULE_ETHERNET"
 
 #---------------------#
 #      Exceptions     #
