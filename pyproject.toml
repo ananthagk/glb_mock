@@ -3,15 +3,16 @@
 line-length = 100
 
 # ruff only support flake8-debugger's rule T100
-lint.select = ["F","T", "T100"]
+#lint.select = ["F","T", "T100"]
 
 # Enable or disable specific rules
-#lint.select = ["E", "W", "F"]
+lint.select = ["E", "W", "F", "T"]
 
 # skipping unused errors for now: F401, F841
 # skip errors due to someone elses __all__ not defined: F403
 # dont error just because print is missing
-lint.ignore = [ "F401", "F841", "F403", "T201", ]
+#lint.ignore = [ "F401", "F841", "F403", "T201", ]
+lint.ignore = [ "T201", ]
 
 # Exclude specific files or directories
 exclude = [ ".git" ]
