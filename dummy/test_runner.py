@@ -45,10 +45,10 @@ def main():
 
     # Add the positional argument
     parser.add_argument(
-        'input_script',
+        'test_name',
         type=str,
         nargs='?',
-        help='Path to input script.'
+        help='Specify the name of the test to run'
     )
 
     # Add optional arguments
