@@ -2,8 +2,8 @@
 
 
 """
-Test Script Template
-Description: [Brief description of the test script]
+Hello world test
+Description: Dummy module to demonstrate framework APIs
 """
 
 # ---------------------#
@@ -11,10 +11,9 @@ Description: [Brief description of the test script]
 # ---------------------#
 # Import all necessary modules and packages required for the test script
 import sys
-import os
 
 import tools.logger as _log
-import tools.module as _module
+import dummy.interfaces.dummy_interface as _dummy
 
 # ---------------------#
 #      Constants       #
@@ -63,19 +62,7 @@ def _setup_test():
     """
     Setup. This function is called before each test.
     """
-    interface_description = [
-        {
-            "MODULE_NAME": "MODULE_DUMMY",
-            "FUNCTION_NAME": "print_hello_world",
-            "DESCRIPTION": "Prints hello world",
-        },
-        {
-            "MODULE_NAME": "MODULE_DUMMY",
-            "FUNCTION_NAME": "print_bye_world",
-            "DESCRIPTION": "Prints bye world",
-        },
-    ]
-    _module.register_module_interface(interface_description)
+    _dummy.print_hello_world()
 
     return 0
 
@@ -90,7 +77,7 @@ def _execute_test():
     """
     Execute. This function contains the actual test.
     """
-    _module.display_module_functions("MODULE_DUMMY")
+
     return 0
 
 
@@ -104,6 +91,9 @@ def _post_test():
     """
     Post-test. This function is called after each test.
     """
+
+    _dummy.print_bye_world()
+
     return 0
 
 
@@ -131,7 +121,7 @@ if __name__ == "__main__":
         return_code = main()
     except Exception as e:
         return_code = -1
-        _log.message("LOG_LEVEL_ERROR", "MODULE_TOOLS", f"Exception: An error occurred {e}")
+        _log.message("LOG_LEVEL_ERROR", "MODULE_TOOLS", "Exception: An error occurred")
 
     _log.message(
         "LOG_LEVEL_INFO", "MODULE_TOOLS", f"Test completed with return code : {return_code}"

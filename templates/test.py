@@ -11,9 +11,8 @@ Description: [Brief description of the test script]
 # ---------------------#
 # Import all necessary modules and packages required for the test script
 import sys
-import os
 
-import tools.logger as log
+import tools.logger as _log
 
 # ---------------------#
 #      Constants       #
@@ -109,15 +108,15 @@ def main():
 
 if __name__ == "__main__":
     # Configure logging
-    log.set_log_level("MODULE_TOOLS", ["LOG_LEVEL_INFO", "LOG_LEVEL_DEBUG", "LOG_LEVEL_ERROR"])
+    _log.set_log_level("MODULE_TOOLS", ["LOG_LEVEL_INFO", "LOG_LEVEL_DEBUG", "LOG_LEVEL_ERROR"])
 
     try:
         return_code = main()
     except Exception:
         return_code = -1
-        log.message("LOG_LEVEL_ERROR", "MODULE_TOOLS", "Exception: An error occurred")
+        _log.message("LOG_LEVEL_ERROR", "MODULE_TOOLS", "Exception: An error occurred")
 
-    log.message(
+    _log.message(
         "LOG_LEVEL_INFO", "MODULE_TOOLS", f"Test completed with return code : {return_code}"
     )
 

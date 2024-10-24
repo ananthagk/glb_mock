@@ -1,16 +1,13 @@
 """
-Test Script Template
-Description: [Brief description of the test script]
+Dummy interfaces
+Description: Interfaces for Dummy module
 """
 
 # ---------------------#
 #    Import Section   #
 # ---------------------#
 # Import all necessary modules and packages required for the test script
-import sys
-import os
-
-import tools.module as module
+import tools.module as _module
 
 # ---------------------#
 #      Constants      #
@@ -47,6 +44,20 @@ def print_hello_world():
 def print_bye_world():
     print("Bye Bye World")
 
+def register_external_interfaces():
+    interface_description = [
+        {
+            "MODULE_NAME": "MODULE_DUMMY",
+            "FUNCTION_NAME": "print_hello_world",
+            "DESCRIPTION": "Prints hello world",
+        },
+        {
+            "MODULE_NAME": "MODULE_DUMMY",
+            "FUNCTION_NAME": "print_bye_world",
+            "DESCRIPTION": "Prints bye world",
+        },
+    ]
+    _module.register_module_interface(interface_description)
 
 # ---------------------#
 #  Private Interfaces #

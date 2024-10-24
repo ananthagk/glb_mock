@@ -1,0 +1,112 @@
+################################################################
+#                      Setup instructions                      #
+################################################################
+1. cd to glb_mock directory and set PYTHONPATH env variable
+    export PYTHONPATH=$PYTHONPATH:$PWD
+
+2. Running test script
+    cd to glb_mock directory
+    python3 dummy/test_runner.py -l
+
+    python3 dummy/test/hello_world.py
+
+
+################################################################
+#                      RUFF tool documentation                 #
+################################################################
+Download Ruff: https://pypi.org/project/ruff/#files
+Install Ruff: "pip install ~/Downloads/ruff-0.7.0-py3-none-win_amd64.whl"
+
+Run "pip show ruff" to find where its installed
+Add the path to the environment variable
+
+OR
+
+Run "python -m ruff" to launch ruff. The command should print out help options
+
+
+Usage: ruff.exe check <FILES|--fix|--no-fix|--unsafe-fixes|--no-unsafe-fixes|--show-fixes|--no-show-fixes|--diff|--watch|--fix-only|--no-fix-only|--ignore-noqa|--o
+utput-format <OUTPUT_FORMAT>|--output-file <OUTPUT_FILE>|--target-version <TARGET_VERSION>|--preview|--no-preview|--select <RULE_CODE>|--ignore <RULE_CODE>|--exten
+d-select <RULE_CODE>|--extend-ignore <RULE_CODE>|--per-file-ignores <PER_FILE_IGNORES>|--extend-per-file-ignores <EXTEND_PER_FILE_IGNORES>|--exclude <FILE_PATTERN>
+|--extend-exclude <FILE_PATTERN>|--fixable <RULE_CODE>|--unfixable <RULE_CODE>|--extend-fixable <RULE_CODE>|--extend-unfixable <RULE_CODE>|--respect-gitignore|--no
+-respect-gitignore|--force-exclude|--no-force-exclude|--line-length <LINE_LENGTH>|--dummy-variable-rgx <DUMMY_VARIABLE_RGX>|--no-cache|--cache-dir <CACHE_DIR>|--st
+din-filename <STDIN_FILENAME>|--extension <EXTENSION>|--exit-zero|--exit-non-zero-on-fix|--statistics|--add-noqa|--show-files|--show-settings>
+
+
+
+Ruff usecases:
+	1. Running ruff on file or directory to check for lint errors
+	"python -m ruff glb_mock"
+
+	templates\test.py:113:5: E722 Do not use bare `except`
+	    |
+	111 |     try:
+	112 |         return_code = main()
+	113 |     except:
+	    |     ^^^^^^ E722
+	114 |         return_code = -1
+	115 |         log.message("LOG_LEVEL_ERROR", "MODULE_TOOLS", "Exception: An error occurred")
+	    |
+
+
+	2. To find what the error was we can use rule command:
+	"python -m ruff rule E722"
+
+
+	# bare-except (E722)
+
+	Derived from the **pycodestyle** linter.
+
+	## What it does
+	Checks for bare `except` catches in `try`-`except` statements.
+
+	## Why is this bad?
+	A bare `except` catches `BaseException` which includes
+	`KeyboardInterrupt`, `SystemExit`, `Exception`, and others. Catching
+	`BaseException` can make it hard to interrupt the program (e.g., with
+	Ctrl-C) and can disguise other problems.
+
+	## Example
+	```python
+	try:
+	    raise KeyboardInterrupt("You probably don't mean to break CTRL-C.")
+	except:
+	    print("But a bare `except` will ignore keyboard interrupts.")
+	```
+
+	Use instead:
+	```python
+	try:
+	    do_something_that_might_break()
+	except MoreSpecificException as e:
+	    handle_error(e)
+
+
+	3. The best part for small/ trivial lint errors, ruff provides an option called --fix
+
+	templates\test.py:113:25: F841 [*] Local variable `e` is assigned to but never used
+	    |
+	111 |     try:
+	112 |         return_code = main()
+	113 |     except Exception as e:
+	    |                         ^ F841
+	114 |         return_code = -1
+	115 |         log.message("LOG_LEVEL_ERROR", "MODULE_TOOLS", "Exception: An error occurred")
+	    |
+	    = help: Remove assignment to unused variable `e`
+
+	"python -m ruff check ./ --fix"
+
+	Found 1 error (1 fixed, 0 remaining).
+
+
+	4. Formatting the code using ruff.
+	Suppose we had a code like
+	a+=b
+	Then the command,
+
+	"python -m ruff format glb_mock"
+
+	Will automatically format the code, i.e. add required white spaces
+	a += b
+	The documentation says it can also reorder the import section,
