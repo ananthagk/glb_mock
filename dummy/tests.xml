@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<module format_version="1">
+  <tests>
+    <category name="WORLD_TESTS">
+      <test cli_switch="hello_world" path="dummmy.test.hello_world">
+        <description>"Greets you to this world"</description>
+      </test>
+      <test cli_switch="bye_world" path="dummmy.test.bye_world">
+        <description>"Bids you farewell"</description>
+      </test>
+    </category>
+  </tests>
+</module>
