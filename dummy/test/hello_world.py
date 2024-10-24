@@ -85,14 +85,23 @@ def _execute_test():
 #  Post-test Section   #
 # ---------------------#
 # Code that cleans up the environment after each individual test
+this_is_one_thing = True
+this_is_another_thing = False
+this_is_yet_another_thing = True
 
 
 def _post_test():
     """
     Post-test. This function is called after each test.
     """
-
     _dummy.print_bye_world()
+
+    if (
+        this_is_one_thing == True
+        and this_is_another_thing == True
+        and this_is_yet_another_thing == True
+    ):
+        pass
 
     return 0
 
@@ -112,6 +121,7 @@ def main():
     # post-test
     return_code += _post_test()
 
+    return return_code
 
 if __name__ == "__main__":
     # Configure logging
@@ -119,7 +129,7 @@ if __name__ == "__main__":
 
     try:
         return_code = main()
-    except Exception as e:
+    except Exception:
         return_code = -1
         _log.message("LOG_LEVEL_ERROR", "MODULE_TOOLS", "Exception: An error occurred")
 

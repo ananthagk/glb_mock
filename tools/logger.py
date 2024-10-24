@@ -9,8 +9,6 @@ It initializes logging severities for each modules, which can be overridden at e
 # ---------------------#
 from enum import Enum
 import logging
-import os
-import sys
 from typing import List
 
 import tools.module as _module

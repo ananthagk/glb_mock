@@ -44,6 +44,7 @@ def print_hello_world():
 def print_bye_world():
     print("Bye Bye World")
 
+
 def register_external_interfaces():
     interface_description = [
         {
@@ -58,6 +59,7 @@ def register_external_interfaces():
         },
     ]
     _module.register_module_interface(interface_description)
+
 
 # ---------------------#
 #  Private Interfaces #
